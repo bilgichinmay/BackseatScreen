@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>gui/main.qml</file>
+        <file>gui/Components/Header.qml</file>
+        <file>gui/Components/Menu.qml</file>
+        <file>gui/Screens/TVSeriesScreen.qml</file>
+        <file>gui/Screens/MovieScreen.qml</file>
     </qresource>
 </RCC>

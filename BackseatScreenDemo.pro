@@ -7,6 +7,7 @@ TARGET = BackseatScreenDemo
 INCLUDEPATH += .
 QT += gui widgets
 QT += qml quick
+#QT += quickcontrols2
 QMAKE_CXXFLAGS += -std=c++14
 # The following define makes your compiler warn you if you use any
 # feature of Qt which has been marked as deprecated (the exact warnings
