@@ -3,7 +3,7 @@ import QtQuick 2.12
 Rectangle {
     signal menuSelected
     property string menuType : ""
-    property bool isSelected : false
+    property bool isClicked : false
 
     visible: true
     color: "#888888"
@@ -22,14 +22,13 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            deselectButtons()
-            if (!isSelected) {
-                isSelected = true
+            if (isClicked === false) {
+                isClicked = !isClicked
+                menuSelected()
             }
-            menuSelected()
         }
     }
 
     border.color: "#363636"
-    border.width: isSelected ? 0 : 8
+    border.width: isClicked ? 0 : 8
 }

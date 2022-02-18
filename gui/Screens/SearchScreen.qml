@@ -8,8 +8,12 @@ Rectangle {
     property string mediaType : ""
     property string enteredText: ""
 
+    property string apiCall : webpageAddress + "?api_key=" + apiKey + "&query=" + searchQuery //enteredText
+    property string webpageAddress : "https://api.themoviedb.org/3/search/"
+    property string apiKey : "361c7eb5c8aa08e79186317b4e404cb9"
+
     Text {
-        text: mediaType + " Search Screen"
+        text: mediaType + " search screen" + "\n" + apiCall
         anchors.centerIn: parent
         color: "#ffffff"
     }
@@ -29,6 +33,7 @@ Rectangle {
             anchors.centerIn: parent
 
             background: Rectangle {
+                radius: height/4
                 anchors.fill: parent
                 color: "#aaaaaa"
             }
@@ -39,4 +44,11 @@ Rectangle {
             }
         }
     }
+
+    property string searchQuery: enteredText.replace(" ", "+")
+
+//    function modifySearchQuery (s) {
+//        s.replace(" ", "\+");
+//        return s;
+//    }
 }

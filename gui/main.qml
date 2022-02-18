@@ -23,17 +23,21 @@ Window {
     Menu {
         id: tvShowButton
         anchors.top: header.bottom
-        menuType:  "TV Shows"
+        menuType:  "tv"
         onMenuSelected: {
-                mainStack.push(tvSeriesSearchElement)
+            moviesButton.isClicked = false
+            homeButton.isClicked = false
+            mainStack.push(tvSeriesSearchElement)
         }
     }
 
     Menu {
         id: moviesButton
         anchors.top: tvShowButton.bottom
-        menuType: "Movies"
+        menuType: "movie"
         onMenuSelected: {
+            tvShowButton.isClicked = false
+            homeButton.isClicked = false
             mainStack.push(movieSearchElement)
         }
     }
@@ -43,8 +47,9 @@ Window {
         anchors.bottom: parent.bottom
         menuType: "Home"
         onMenuSelected: {
+            tvShowButton.isClicked = false
+            moviesButton.isClicked = false
             mainStack.pop(null)
-            deselectButtons()
         }
         Image {
             id: homeIcon
@@ -92,11 +97,5 @@ Window {
         SearchScreen {
             mediaType: "Movies"
         }
-    }
-
-    function deselectButtons() {
-        tvShowButton.isSelected = false
-        moviesButton.isSelected = false
-        homeButton.isSelected = false
     }
 }
