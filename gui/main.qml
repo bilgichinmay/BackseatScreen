@@ -89,13 +89,13 @@ Window {
     Component {
         id: tvSeriesSearchElement
         SearchScreen {
-            mediaType: "TV Show"
+            mediaType: "tv"
         }
     }
     Component {
         id: movieSearchElement
         SearchScreen {
-            mediaType: "Movies"
+            mediaType: "movie"
         }
     }
 }

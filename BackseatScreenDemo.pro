@@ -21,7 +21,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Input
 SOURCES += main.cpp \
-    gui/gui.cpp
+    backend/simulator.cpp \
+    gui/gui.cpp \
+    gui/guieventhandler.cpp
 
 DISTFILES +=
 
@@ -30,6 +32,7 @@ RESOURCES += \
     qml.qrc
 
 HEADERS += \
+    backend/simulator.h \
+    gui/guieventhandler.h \
     interfaces/IGUI.h \
-    interfaces/IGUIEventHandler.h \
     gui/gui.h

@@ -1,19 +1,20 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.3
 
+import EventHandler 1.0
+
 Rectangle {
     visible: true
     color: "#363636"
 
     property string mediaType : ""
-    property string enteredText: ""
 
-    property string apiCall : webpageAddress + "?api_key=" + apiKey + "&query=" + searchQuery //enteredText
-    property string webpageAddress : "https://api.themoviedb.org/3/search/"
-    property string apiKey : "361c7eb5c8aa08e79186317b4e404cb9"
+    EventHandler {
+        id: backend
+    }
 
     Text {
-        text: mediaType + " search screen" + "\n" + apiCall
+        text: mediaType //+ " search screen" + "\n" + apiCall
         anchors.centerIn: parent
         color: "#ffffff"
     }
@@ -40,15 +41,12 @@ Rectangle {
             placeholderText: "Search your favourite shows here..."
 
             onTextChanged: {
-                enteredText = text
+                if (mediaType == "tv") {
+                    backend.searchTVShow(text)
+                } else {
+                    backend.searchMovie(text)
+                }
             }
         }
     }
-
-    property string searchQuery: enteredText.replace(" ", "+")
-
-//    function modifySearchQuery (s) {
-//        s.replace(" ", "\+");
-//        return s;
-//    }
 }

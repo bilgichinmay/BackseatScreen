@@ -1,5 +1,7 @@
 #include "gui.h"
 
+#include "guieventhandler.h"
+
 namespace gui {
 
 /**
@@ -7,7 +9,9 @@ namespace gui {
  *
  * @param parent
  */
-GUI::GUI(QObject* parent) : QObject(parent) {}
+GUI::GUI(QObject* parent) : QObject(parent) {
+  qmlRegisterType<gui::GUIEventHandler>("EventHandler", 1, 0, "EventHandler");
+}
 
 /**
  * @brief GUI::init
