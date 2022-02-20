@@ -22,7 +22,7 @@ class GUIEventHandler : public QObject {
 
  private:
   friend class gui::GUI;
-  std::shared_ptr<backend::Simulator> simulator_;
+  std::shared_ptr<backend::TMDBApiCaller> simulator_;
 };
 
 }  // namespace gui

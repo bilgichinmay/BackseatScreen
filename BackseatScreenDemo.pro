@@ -8,6 +8,10 @@ INCLUDEPATH += .
 QT += gui widgets
 QT += qml quick
 QMAKE_CXXFLAGS += -std=c++14
+
+#INCLUDEPATH += /usr/lib/x86_64-linux-gnu/
+#LIBS += /usr/lib/x86_64-linux-gnu/libcurl.a
+LIBS+=-lcurl
 # The following define makes your compiler warn you if you use any
 # feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -21,7 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Input
 SOURCES += main.cpp \
-    backend/simulator.cpp \
+    backend/tmdbapicaller.cpp \
     gui/gui.cpp \
     gui/guieventhandler.cpp
 
@@ -32,7 +36,7 @@ RESOURCES += \
     qml.qrc
 
 HEADERS += \
-    backend/simulator.h \
+    backend/tmdbapicaller.h \
     gui/guieventhandler.h \
     interfaces/IGUI.h \
     gui/gui.h

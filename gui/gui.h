@@ -3,6 +3,8 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include <QVariant>
 #include <memory>
 
 #include "interfaces/IGUI.h"

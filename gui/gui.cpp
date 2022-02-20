@@ -21,6 +21,11 @@ GUI::GUI(QObject* parent) : QObject(parent) {
 void GUI::init(const int& argc, char* argv[]) {
   app_ = std::make_unique<QGuiApplication>((int&)argc, argv);
   app_engine_ = std::make_unique<QQmlApplicationEngine>();
+
+  auto context = std::make_unique<QQmlContext>(app_engine_->rootContext());
+  context->setContextProperty(QStringLiteral("gui"),
+                              QVariant::fromValue(&(*this)));
+
   app_engine_->load(QUrl(QStringLiteral("qrc:/gui/main.qml")));
 }
 

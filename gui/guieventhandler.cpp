@@ -9,7 +9,9 @@ void gui::GUIEventHandler::searchMovie(QString s) {
   for (int i = 0; i < (int)str.length(); i++) {
     if (str[i] == ' ') str[i] = '+';
   }
-  simulator_->searchMovie(str);
+  std::string res = simulator_->searchMovie(str);
+  std::cout << res << std::endl;
+  std::cout << "FROM EVENT HANDLER" << std::endl;
 }
 
 void gui::GUIEventHandler::searchTVShow(QString s) {
@@ -19,5 +21,7 @@ void gui::GUIEventHandler::searchTVShow(QString s) {
   for (int i = 0; i < (int)str.length(); i++) {
     if (str[i] == ' ') str[i] = '+';
   }
-  simulator_->searchTVShow(str);
+  std::string res = simulator_->searchTVShow(str);
+  std::cout << res << std::endl;
+  std::cout << "FROM EVENT HANDLER" << std::endl;
 }
