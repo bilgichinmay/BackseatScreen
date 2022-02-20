@@ -9,8 +9,8 @@ QT += gui widgets
 QT += qml quick
 QMAKE_CXXFLAGS += -std=c++14
 
-#INCLUDEPATH += /usr/lib/x86_64-linux-gnu/
-#LIBS += /usr/lib/x86_64-linux-gnu/libcurl.a
+INCLUDEPATH += "/tmp/vcpkg/installed/x64-linux/include"
+LIBS += -ljsoncpp
 LIBS+=-lcurl
 # The following define makes your compiler warn you if you use any
 # feature of Qt which has been marked as deprecated (the exact warnings
@@ -25,7 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Input
 SOURCES += main.cpp \
+    backend/moviedata.cpp \
     backend/tmdbapicaller.cpp \
+    backend/tvshowdata.cpp \
+    backend/tvshowepisodes.cpp \
+    backend/tvshowseasondata.cpp \
     gui/gui.cpp \
     gui/guieventhandler.cpp
 
@@ -36,7 +40,11 @@ RESOURCES += \
     qml.qrc
 
 HEADERS += \
+    backend/moviedata.h \
     backend/tmdbapicaller.h \
+    backend/tvshowdata.h \
+    backend/tvshowepisodes.h \
+    backend/tvshowseasondata.h \
     gui/guieventhandler.h \
     interfaces/IGUI.h \
     gui/gui.h

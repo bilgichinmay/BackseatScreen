@@ -1,11 +1,17 @@
 #ifndef GUIEVENTHANDLER_H
 #define GUIEVENTHANDLER_H
 
+#include <json/json.h>
+
 #include <QObject>
 #include <iostream>
 #include <memory>
 
-#include "backend/simulator.h"
+#include "backend/moviedata.h"
+#include "backend/tmdbapicaller.h"
+#include "backend/tvshowdata.h"
+#include "backend/tvshowepisodes.h"
+#include "backend/tvshowseasondata.h"
 #include "gui.h"
 
 namespace gui {
@@ -17,12 +23,25 @@ class GUIEventHandler : public QObject {
 
   Q_INVOKABLE void searchMovie(QString s);
   Q_INVOKABLE void searchTVShow(QString s);
+  Q_INVOKABLE void getTVShowSeasons(QString id);
+  Q_INVOKABLE void getEpisodesList(QString id, QString season);
+
+  void parseJsonDataToTVShowList(std::string data);
+  void parseJsonDataToTVShowSeasonList(std::string data);
+  void parseJsonDataToTVShowEpisodesList(std::string data);
+  void parseJsonDataToMovieList(std::string data);
+
+  void clearData();
 
  signals:
 
  private:
-  friend class gui::GUI;
-  std::shared_ptr<backend::Simulator> simulator_;
+  std::shared_ptr<backend::TMDBApiCaller> tmdb_api_;
+
+  std::vector<backend::TVShowData> tv_show_list_;
+  std::vector<backend::TVShowSeasonData> tv_show_season_list_;
+  std::vector<backend::TVShowEpisodes> tv_show_episodes_list_;
+  std::vector<backend::MovieData> movie_list_;
 };
 
 }  // namespace gui

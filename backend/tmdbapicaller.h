@@ -13,9 +13,12 @@ namespace backend {
 class TMDBApiCaller {
  public:
   TMDBApiCaller();
+  ~TMDBApiCaller() = default;
 
   std::string searchMovie(std::string s);
   std::string searchTVShow(std::string s);
+  std::string getTVShowSeasons(std::string id);
+  std::string getEpisodesList(std::string id, std::string season);
 
   std::string getUrl(std::string url);
 
