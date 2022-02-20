@@ -2,7 +2,6 @@
 #define TVSHOWSEASONDATA_H
 
 #include <string>
-#include <vector>
 
 namespace backend {
 class TVShowSeasonData {

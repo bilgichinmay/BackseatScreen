@@ -1,6 +1,8 @@
 #include "gui.h"
 
 #include "guieventhandler.h"
+#include "models/movielistmodel.h"
+#include "models/tvshowlist.h"
 
 namespace gui {
 
@@ -11,6 +13,8 @@ namespace gui {
  */
 GUI::GUI(QObject* parent) : QObject(parent) {
   qmlRegisterType<gui::GUIEventHandler>("EventHandler", 1, 0, "EventHandler");
+  qmlRegisterType<gui::MovieListModel>("MovieList", 1, 0, "MovieListModel");
+  qmlRegisterType<gui::TVShowListModel>("TVShowList", 1, 0, "TVShowListModel");
 }
 
 /**
@@ -38,10 +42,5 @@ void GUI::execute() { app_->exec(); }
  * @brief GUI::exit
  */
 void GUI::exit() { app_->exit(); }
-
-/**
- * @brief GUI::update
- */
-void GUI::update() {}
 
 }  // namespace gui

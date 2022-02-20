@@ -106,6 +106,8 @@ void gui::GUIEventHandler::parseJsonDataToMovieList(std::string data) {
                                  results[i]["original_title"].asString());
         movie_list_.push_back(movie);
       }
+      //      std::cout << "Title : " << movie_list_.at(0).title() << std::endl;
+      //      std::cout << "Title : " << movie_list_.at(1).title() << std::endl;
       std::cout << "Number of results: " << number_of_results << std::endl;
     } else {
       std::cout << "ERROR RETRIEVING RESULTS FROM JSON" << std::endl;
@@ -173,4 +175,41 @@ void gui::GUIEventHandler::clearData() {
   tv_show_season_list_.clear();
   tv_show_episodes_list_.clear();
   movie_list_.clear();
+}
+
+std::vector<backend::MovieData> gui::GUIEventHandler::movies() {
+  return movie_list_;
+}
+
+void gui::GUIEventHandler::movies(std::vector<backend::MovieData> list) {
+  movie_list_ = list;
+  moviesChanged();
+}
+
+std::vector<backend::TVShowData> gui::GUIEventHandler::tvShows() {
+  return tv_show_list_;
+}
+
+void gui::GUIEventHandler::tvShows(std::vector<backend::TVShowData> list) {
+  tv_show_list_ = list;
+  tvShowsChanged();
+}
+
+std::vector<backend::TVShowSeasonData> gui::GUIEventHandler::seasons() {
+  return tv_show_season_list_;
+}
+
+void gui::GUIEventHandler::seasons(
+    std::vector<backend::TVShowSeasonData> list) {
+  tv_show_season_list_ = list;
+  seasonsChanged();
+}
+
+std::vector<backend::TVShowEpisodes> gui::GUIEventHandler::episodes() {
+  return tv_show_episodes_list_;
+}
+
+void gui::GUIEventHandler::episodes(std::vector<backend::TVShowEpisodes> list) {
+  tv_show_episodes_list_ = list;
+  episodesChanged();
 }

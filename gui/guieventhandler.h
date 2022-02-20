@@ -6,6 +6,7 @@
 #include <QObject>
 #include <iostream>
 #include <memory>
+#include <vector>
 
 #include "backend/moviedata.h"
 #include "backend/tmdbapicaller.h"
@@ -33,7 +34,23 @@ class GUIEventHandler : public QObject {
 
   void clearData();
 
+  Q_INVOKABLE std::vector<backend::MovieData> movies();
+  Q_INVOKABLE void movies(std::vector<backend::MovieData> list);
+
+  Q_INVOKABLE std::vector<backend::TVShowData> tvShows();
+  Q_INVOKABLE void tvShows(std::vector<backend::TVShowData> list);
+
+  Q_INVOKABLE std::vector<backend::TVShowSeasonData> seasons();
+  Q_INVOKABLE void seasons(std::vector<backend::TVShowSeasonData> list);
+
+  Q_INVOKABLE std::vector<backend::TVShowEpisodes> episodes();
+  Q_INVOKABLE void episodes(std::vector<backend::TVShowEpisodes> list);
+
  signals:
+  void moviesChanged();
+  void tvShowsChanged();
+  void seasonsChanged();
+  void episodesChanged();
 
  private:
   std::shared_ptr<backend::TMDBApiCaller> tmdb_api_;

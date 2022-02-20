@@ -26,13 +26,6 @@ class IGUI {
    * Finishes GUI execution.
    */
   virtual void exit() = 0;
-
-  /**
-   * @brief update
-   *
-   * Updates GUI whenever data from backend is changed/ updated.
-   */
-  virtual void update() = 0;
 };
 }  // namespace gui
 

@@ -31,7 +31,9 @@ SOURCES += main.cpp \
     backend/tvshowepisodes.cpp \
     backend/tvshowseasondata.cpp \
     gui/gui.cpp \
-    gui/guieventhandler.cpp
+    gui/guieventhandler.cpp \
+    models/movielistmodel.cpp \
+    models/tvshowlist.cpp
 
 DISTFILES +=
 
@@ -47,4 +49,6 @@ HEADERS += \
     backend/tvshowseasondata.h \
     gui/guieventhandler.h \
     interfaces/IGUI.h \
-    gui/gui.h
+    gui/gui.h \
+    models/movielistmodel.h \
+    models/tvshowlist.h
