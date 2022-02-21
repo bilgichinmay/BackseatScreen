@@ -33,6 +33,8 @@ SOURCES += main.cpp \
     gui/gui.cpp \
     gui/guieventhandler.cpp \
     models/movielistmodel.cpp \
+    models/tvshoeseasonsmodel.cpp \
+    models/tvshowepisodesmodel.cpp \
     models/tvshowlist.cpp
 
 DISTFILES +=
@@ -51,4 +53,6 @@ HEADERS += \
     interfaces/IGUI.h \
     gui/gui.h \
     models/movielistmodel.h \
+    models/tvshoeseasonsmodel.h \
+    models/tvshowepisodesmodel.h \
     models/tvshowlist.h

@@ -10,8 +10,8 @@ Rectangle {
     visible: true
     color: "#363636"
 
-    property string mediaType : ""
-    property string enteredText : ""
+    property string mediaType
+    property string enteredText: ""
 
     EventHandler {
         id: backend
@@ -39,9 +39,9 @@ Rectangle {
 
         Rectangle {
             id: searchConfirmButton
-            width : 80
+            width: 80
             height: parent.height
-            radius: height/2
+            radius: height / 2
             color: "#888888"
             anchors.right: parent.right
 
@@ -53,7 +53,7 @@ Rectangle {
             }
 
             MouseArea {
-                property bool isClicked : false
+                property bool isClicked: false
 
                 anchors.fill: parent
                 onClicked: {
@@ -63,9 +63,11 @@ Rectangle {
                         if (mediaType == "tv") {
                             backend.searchTVShow(enteredText)
                             tvShowListModel.tvshows = backend.tvShows()
+                            movieListContainer.visible = false
                         } else {
                             backend.searchMovie(enteredText)
                             movieListModel.movies = backend.movies()
+                            tvShowListContainer.visible = false
                         }
                     }
                 }
@@ -80,7 +82,7 @@ Rectangle {
             anchors.centerIn: parent
 
             background: Rectangle {
-                radius: height/4
+                radius: height / 4
                 anchors.fill: parent
                 color: "#aaaaaa"
             }
@@ -99,7 +101,7 @@ Rectangle {
         width: parent.width
         height: parent.height - textFieldContainer.height
 
-        anchors.top : textFieldContainer.bottom
+        anchors.top: textFieldContainer.bottom
 
         GridLayout {
             id: movieListLayout
@@ -120,17 +122,26 @@ Rectangle {
 
                     width: parent.width
                     height: 80
+                    color: "#363636"
 
                     Text {
                         id: movieTitle
                         text: model.title
-                        color:  "#ffffff"
+                        color: "#ffffff"
                         topPadding: 20
                         leftPadding: 100
                     }
 
-                    border.color: "#555555"
-                    border.width : 1
+                    border.color: "#ffffff"
+                    border.width: 1
+
+                    MouseArea {
+                        anchors.fill: parent
+
+                        onClicked: {
+                            mainStack.pop(null)
+                        }
+                    }
                 }
             }
         }
@@ -139,11 +150,9 @@ Rectangle {
     Rectangle {
         id: tvShowListContainer
         color: parent.color
-
         width: parent.width
         height: parent.height - textFieldContainer.height
-
-        anchors.top : textFieldContainer.bottom
+        anchors.top: textFieldContainer.bottom
 
         GridLayout {
             id: tvShowListLayout
@@ -151,6 +160,7 @@ Rectangle {
             rowSpacing: 5
             columnSpacing: 0
             flow: GridLayout.TopToBottom
+            clip: true
 
             Repeater {
                 id: tvShowLister
@@ -159,22 +169,49 @@ Rectangle {
                     id: tvShowListModel
                 }
 
-                delegate: Rectangle {
-                    id: tvShowListerDelegate
+                delegate: tvShowDelegate
 
-                    width: parent.width
-                    height: 80
+                Component {
+                    id: tvShowDelegate
+                    Rectangle {
+                        id: tvShowListerDelegate
 
-                    Text {
-                        id: tvShowTitle
-                        text: model.title
-                        color:  "#ffffff"
-                        topPadding: 20
-                        leftPadding: 100
+                        width: parent.width
+                        height: 80
+
+                        Text {
+                            id: tvShowTitle
+                            text: model.title
+                            color: "#ffffff"
+                            topPadding: 20
+                            leftPadding: 100
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+
+                            onClicked: {
+
+                            }
+                        }
+
+                        //                        Button {
+                        //                            id: tvShowSelector
+
+                        //                            width: 80
+                        //                            height: 80
+                        //                            anchors.right: parent.right
+
+                        //                            background: Rectangle {
+                        //                                anchors.fill: parent
+                        //                                color: "#ffffff"
+                        //                            }
+
+                        //                            onClicked: {
+                        //                                mainStack.pop(null)
+                        //                            }
+                        //                        }
                     }
-
-                    border.color: "#555555"
-                    border.width : 1
                 }
             }
         }

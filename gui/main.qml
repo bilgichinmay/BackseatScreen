@@ -23,7 +23,7 @@ Window {
     Menu {
         id: tvShowButton
         anchors.top: header.bottom
-        menuType:  "tv"
+        menuType: "tv"
         onMenuSelected: {
             moviesButton.isClicked = false
             homeButton.isClicked = false
