@@ -10,6 +10,11 @@
 
 namespace gui {
 
+/**
+ * @brief The TVShowListModel class
+ *
+ * Qt model for TV Shows
+ */
 class TVShowListModel : public QAbstractListModel {
   Q_OBJECT
 

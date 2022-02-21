@@ -10,6 +10,11 @@
 
 namespace gui {
 
+/**
+ * @brief The TVShoeSeasonsModel class
+ *
+ * Qt model for TV Show seasons
+ */
 class TVShoeSeasonsModel : public QAbstractListModel {
   Q_OBJECT
 
@@ -18,7 +23,7 @@ class TVShoeSeasonsModel : public QAbstractListModel {
  public:
   explicit TVShoeSeasonsModel(QObject *parent = nullptr);
 
-  enum { idRole = Qt::UserRole, titleRole };
+  enum { idRole = Qt::UserRole, titleRole, seasonNumberRole };
 
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
   QVariant data(const QModelIndex &index,

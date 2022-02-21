@@ -10,6 +10,11 @@
 
 namespace gui {
 
+/**
+ * @brief The MovieListModel class
+ *
+ * Qt model for movies
+ */
 class MovieListModel : public QAbstractListModel {
   Q_OBJECT
 

@@ -3,8 +3,6 @@
 backend::TMDBApiCaller::TMDBApiCaller() {}
 
 std::string backend::TMDBApiCaller::searchMovie(std::string s) {
-  std::cout << s << std::endl;
-
   std::string webpage = "https://api.themoviedb.org/3/search/";
   std::string api_key = "361c7eb5c8aa08e79186317b4e404cb9";
   std::string api_call = webpage + "movie?api_key=" + api_key + "&query=" + s;
@@ -15,8 +13,6 @@ std::string backend::TMDBApiCaller::searchMovie(std::string s) {
 }
 
 std::string backend::TMDBApiCaller::searchTVShow(std::string s) {
-  std::cout << s << std::endl;
-
   std::string webpage = "https://api.themoviedb.org/3/search/";
   std::string api_key = "361c7eb5c8aa08e79186317b4e404cb9";
   std::string api_call = webpage + "tv?api_key=" + api_key + "&query=" + s;
@@ -28,9 +24,6 @@ std::string backend::TMDBApiCaller::searchTVShow(std::string s) {
 
 std::string backend::TMDBApiCaller::getEpisodesList(std::string id,
                                                     std::string season) {
-  // Example:
-  // https://api.themoviedb.org/3/tv/2691/season/1?api_key=361c7eb5c8aa08e79186317b4e404cb9
-
   std::string webpage = "https://api.themoviedb.org/3/tv/";
   std::string api_key = "361c7eb5c8aa08e79186317b4e404cb9";
   std::string api_call =
@@ -42,9 +35,6 @@ std::string backend::TMDBApiCaller::getEpisodesList(std::string id,
 }
 
 std::string backend::TMDBApiCaller::getTVShowSeasons(std::string id) {
-  // Example:
-  // https://api.themoviedb.org/3/tv/2691?api_key=361c7eb5c8aa08e79186317b4e404cb9
-
   std::string webpage = "https://api.themoviedb.org/3/tv/";
   std::string api_key = "361c7eb5c8aa08e79186317b4e404cb9";
   std::string api_call = webpage + id + "?api_key=" + api_key;

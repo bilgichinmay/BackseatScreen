@@ -2,6 +2,12 @@
 #define INTERFACES_IGUI_H
 
 namespace gui {
+
+/**
+ * @brief The IGUI class
+ *
+ * Interface class for GUI creation and initialization
+ */
 class IGUI {
  public:
   virtual ~IGUI() = default;

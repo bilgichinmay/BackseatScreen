@@ -29,6 +29,8 @@ QVariant gui::TVShowEpisodesModel::data(const QModelIndex &index,
   switch (role) {
     case idRole:
       return QVariant(QString::fromStdString(movie->id()));
+    case titleRole:
+      return QVariant(QString::fromStdString(movie->title()));
   }
 
   return QVariant();
@@ -37,5 +39,6 @@ QVariant gui::TVShowEpisodesModel::data(const QModelIndex &index,
 QHash<int, QByteArray> gui::TVShowEpisodesModel::roleNames() const {
   QHash<int, QByteArray> roles;
   roles[idRole] = "id";
+  roles[titleRole] = "title";
   return roles;
 }

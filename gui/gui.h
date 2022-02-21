@@ -16,6 +16,11 @@
 
 namespace gui {
 
+/**
+ * @brief The GUI class
+ *
+ * Creates and manages GUI
+ */
 class GUI : public QObject, virtual public gui::IGUI {
   Q_OBJECT
  public:

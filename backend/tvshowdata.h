@@ -4,6 +4,12 @@
 #include <string>
 
 namespace backend {
+
+/**
+ * @brief The TVShowData class
+ *
+ * Data Access Layer for TV Shows data
+ */
 class TVShowData {
  public:
   TVShowData(std::string id, std::string title);

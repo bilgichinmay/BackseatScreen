@@ -15,7 +15,6 @@ void gui::GUIEventHandler::searchMovie(QString s) {
 
   // get movies list based on given keywords
   std::string res = tmdb_api_->searchMovie(str);
-  std::cout << res << std::endl;
 
   // parse json and fill data
   parseJsonDataToMovieList(res);
@@ -31,7 +30,6 @@ void gui::GUIEventHandler::searchTVShow(QString s) {
 
   // get tv shows list based on given keywords
   std::string res = tmdb_api_->searchTVShow(str);
-  std::cout << res << std::endl;
 
   // parse json and fill data
   parseJsonDataToTVShowList(res);
@@ -42,7 +40,6 @@ void gui::GUIEventHandler::getTVShowSeasons(QString id) {
 
   // get tv show seasons
   std::string res = tmdb_api_->getTVShowSeasons(tv_show_id);
-  std::cout << res << std::endl;
 
   // parse json and fill data
   parseJsonDataToTVShowSeasonList(res);
@@ -54,7 +51,6 @@ void gui::GUIEventHandler::getEpisodesList(QString id, QString season) {
 
   // get episodes for given TV show for given season
   std::string res = tmdb_api_->getEpisodesList(tv_show_id, tv_show_season);
-  std::cout << res << std::endl;
 
   // parse json and fill data
   parseJsonDataToTVShowEpisodesList(res);
@@ -73,7 +69,6 @@ void gui::GUIEventHandler::parseJsonDataToTVShowList(std::string data) {
       int number_of_results = jsonData["total_results"].asInt();
 
       for (int i = 0; i < number_of_results; i++) {
-        std::cout << "ID: " << results[i]["id"].asString() << std::endl;
         backend::TVShowData tv_show(results[i]["id"].asString(),
                                     results[i]["name"].asString());
         tv_show_list_.push_back(tv_show);
@@ -101,13 +96,11 @@ void gui::GUIEventHandler::parseJsonDataToMovieList(std::string data) {
       int number_of_results = jsonData["total_results"].asInt();
 
       for (int i = 0; i < number_of_results; i++) {
-        std::cout << "ID: " << results[i]["id"].asString() << std::endl;
         backend::MovieData movie(results[i]["id"].asString(),
                                  results[i]["original_title"].asString());
         movie_list_.push_back(movie);
       }
-      //      std::cout << "Title : " << movie_list_.at(0).title() << std::endl;
-      //      std::cout << "Title : " << movie_list_.at(1).title() << std::endl;
+
       std::cout << "Number of results: " << number_of_results << std::endl;
     } else {
       std::cout << "ERROR RETRIEVING RESULTS FROM JSON" << std::endl;
@@ -130,9 +123,9 @@ void gui::GUIEventHandler::parseJsonDataToTVShowSeasonList(std::string data) {
       int number_of_seasons = jsonData["seasons"].size();
 
       for (int i = 0; i < number_of_seasons; i++) {
-        std::cout << "ID: " << seasons[i]["id"].asString() << std::endl;
-        backend::TVShowSeasonData season(seasons[i]["id"].asString(),
-                                         seasons[i]["name"].asString());
+        backend::TVShowSeasonData season(
+            seasons[i]["id"].asString(), seasons[i]["name"].asString(),
+            seasons[i]["season_number"].asString());
         tv_show_season_list_.push_back(season);
       }
       std::cout << "Number of seasons: " << number_of_seasons << std::endl;
@@ -157,8 +150,8 @@ void gui::GUIEventHandler::parseJsonDataToTVShowEpisodesList(std::string data) {
       int number_of_episodes = jsonData["episodes"].size();
 
       for (int i = 0; i < number_of_episodes; i++) {
-        std::cout << "ID: " << episodes[i]["id"].asString() << std::endl;
-        backend::TVShowEpisodes episode(episodes[i]["id"].asString());
+        backend::TVShowEpisodes episode(episodes[i]["id"].asString(),
+                                        episodes[i]["name"].asString());
         tv_show_episodes_list_.push_back(episode);
       }
       std::cout << "Number of episodes: " << number_of_episodes << std::endl;

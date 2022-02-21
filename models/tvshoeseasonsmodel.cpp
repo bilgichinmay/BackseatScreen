@@ -31,6 +31,8 @@ QVariant gui::TVShoeSeasonsModel::data(const QModelIndex &index,
       return QVariant(QString::fromStdString(season->id()));
     case titleRole:
       return QVariant(QString::fromStdString(season->title()));
+    case seasonNumberRole:
+      return QVariant(QString::fromStdString(season->season()));
   }
 
   return QVariant();
@@ -40,5 +42,6 @@ QHash<int, QByteArray> gui::TVShoeSeasonsModel::roleNames() const {
   QHash<int, QByteArray> roles;
   roles[idRole] = "id";
   roles[titleRole] = "title";
+  roles[seasonNumberRole] = "season";
   return roles;
 }

@@ -10,6 +10,11 @@
 
 namespace backend {
 
+/**
+ * @brief The TMDBApiCaller class
+ *
+ * Uses TMDB API to fetch required media data.
+ */
 class TMDBApiCaller {
  public:
   TMDBApiCaller();

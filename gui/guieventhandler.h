@@ -17,6 +17,11 @@
 
 namespace gui {
 
+/**
+ * @brief The GUIEventHandler class
+ *
+ * Handles GUI requests. Exchanges data between frontend and backend
+ */
 class GUIEventHandler : public QObject {
   Q_OBJECT
  public:

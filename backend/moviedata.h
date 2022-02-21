@@ -4,6 +4,12 @@
 #include <string>
 
 namespace backend {
+
+/**
+ * @brief The MovieData class
+ *
+ * Data Access Layer for movies data
+ */
 class MovieData {
  public:
   MovieData(std::string id, std::string title);
